@@ -1,7 +1,7 @@
 package com.hexaware.cozyhavenproject.dto;
 
 import jakarta.validation.constraints.*;
-//dto class 
+//dto class date:7/8/25
 
 public class HotelDto {
 
