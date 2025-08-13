@@ -1,5 +1,6 @@
 package com.hexaware.cozyhavenproject.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,9 +18,13 @@ public class BookingPerson {
   @ManyToOne
   @JoinColumn(name = "booking_id")
   private Booking booking;
+  
+
 
   private Integer age;
   private Boolean isChild;
+
+  private String name;
 
   // Getters and Setters
   public Integer getPersonId() { return personId; }
@@ -33,5 +38,10 @@ public class BookingPerson {
 
   public Boolean getIsChild() { return isChild; }
   public void setIsChild(Boolean isChild) { this.isChild = isChild; }
+  
+  public void setName(String name) {
+	
+	this.name=name;
+  }
 
 }

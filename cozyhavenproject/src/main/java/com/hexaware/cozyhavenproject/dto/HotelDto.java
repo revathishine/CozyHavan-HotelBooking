@@ -3,6 +3,13 @@ package com.hexaware.cozyhavenproject.dto;
 import jakarta.validation.constraints.*;
 //dto class date:7/8/25
 
+
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class HotelDto {
 
 	private Integer hotelId;

@@ -9,4 +9,5 @@ public interface ReviewService {
     List<Review> getAllReviews();
     Review updateReview(Review review);
     void deleteReview(Integer id);
+    List<Review> getReviewsByHotelId(Integer hotelId);
 }
