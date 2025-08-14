@@ -1,3 +1,6 @@
+//11/8/25
+
+
 package com.hexaware.cozyhavenproject.util;
 
 import java.math.BigDecimal;
@@ -11,9 +14,9 @@ public final class PricingUtil {
 
     // adults = count considered >14, children = count considered <=14
     public static BigDecimal calculatePerNight(Room room, int adults, int children) {
-        BigDecimal base = room.getBaseFare(); // BigDecimal recommended in entity
-        int maxByBed = capacityByBedType(room.getBedType()); // 2/4/6
-        int included = includedByBedType(room.getBedType()); // 1 for SINGLE, 2 for DOUBLE, 4 for KING (per spec)
+        BigDecimal base = room.getBaseFare();
+        int maxByBed = capacityByBedType(room.getBedType()); 
+        int included = includedByBedType(room.getBedType());
         int total = adults + children;
 
         if (total <= included) {
@@ -22,13 +25,13 @@ public final class PricingUtil {
 
         int extra = total - included;
         // charge extra per person: adult 40%, child 20% of base
-        int chargeableAdults = Math.min(adults, extra); // prioritize adults in extras
+        int chargeableAdults = Math.min(adults, extra); 
         int chargeableChildren = Math.max(0, extra - chargeableAdults);
 
         BigDecimal adultExtra = base.multiply(BigDecimal.valueOf(0.40)).multiply(BigDecimal.valueOf(chargeableAdults));
         BigDecimal childExtra = base.multiply(BigDecimal.valueOf(0.20)).multiply(BigDecimal.valueOf(chargeableChildren));
 
-        // If total exceeds maximum capacity, caller should block booking; here we just return price
+        // If total exceeds maximum capacity, caller should block bookinge
         return base.add(adultExtra).add(childExtra);
     }
 
@@ -42,7 +45,7 @@ public final class PricingUtil {
     }
 
     public static int includedByBedType(BedType bedType) {
-        // From PDF: SINGLE -> charges start from 2nd person, DOUBLE -> from 3rd, KING -> from 5th
+        //  SINGLE -> charges start from 2nd person, DOUBLE -> from 3rd, KING -> from 5th
         return switch (bedType) {
             case SINGLE -> 1;
             case DOUBLE -> 2;

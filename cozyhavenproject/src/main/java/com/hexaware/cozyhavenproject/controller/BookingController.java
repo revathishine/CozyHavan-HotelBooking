@@ -45,7 +45,7 @@ public class BookingController {
     @Autowired private UserRepository userRepository;
     @Autowired private BookingPersonRepository bookingPersonRepository;
 
-    // -------- New Create Booking with Business Logic --------
+    
     @PostMapping
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<BookingResponse> createBooking(
@@ -111,7 +111,7 @@ public class BookingController {
         return ResponseEntity.ok(resp);
     }
 
-    // -------- Cancel Booking with Refund --------
+    // Cancel Booking with Refun
     @PostMapping("/{bookingId}/cancel")
     @PreAuthorize("hasAnyRole('USER','HOTEL_OWNER','ADMIN')")
     public ResponseEntity<BookingResponse> cancelBooking(
@@ -150,7 +150,7 @@ public class BookingController {
         return ResponseEntity.ok(resp);
     }
 
-    // -------- Your Original CRUD Methods --------
+    // crud
     @GetMapping("/{id}")
     public ResponseEntity<Booking> getBooking(@PathVariable Integer id) {
         return ResponseEntity.ok(bookingService.getBookingById(id));

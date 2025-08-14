@@ -1,3 +1,6 @@
+//date 10/8/25
+
+
 package com.hexaware.cozyhavenproject.security;
 
 import java.io.IOException;
@@ -61,7 +64,7 @@ public class JwtAuthendicationFiter extends OncePerRequestFilter {
 	            }
 	        } catch (Exception ex) {
 	            // invalid token or user not found
-	            // let security handle it by not setting authentication
+	           
 	        }
 	        filterChain.doFilter(request, response);
 	    }
