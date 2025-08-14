@@ -1,7 +1,5 @@
 //date:4/8/25 author
 
-
-
 package com.hexaware.cozyhavenproject.controller;
 
 import java.math.BigDecimal;
@@ -56,6 +54,15 @@ public class BookingController {
         if (user == null) {
 			throw new ResourceNotFoundException("User not found");
 		}
+        
+        // Explicit date checks
+        if (!req.getCheckInDate().isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("Check-in date must be after today");
+        }
+        if (!req.getCheckOutDate().isAfter(req.getCheckInDate())) {
+            throw new IllegalArgumentException("Check-out date must be after check-in date");
+        }
+        
 
         Room room = roomRepository.findById(req.getRoomId())
                 .orElseThrow(() -> new ResourceNotFoundException("Room not found"));
