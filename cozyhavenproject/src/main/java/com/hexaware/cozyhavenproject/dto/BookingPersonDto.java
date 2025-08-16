@@ -1,3 +1,5 @@
+//
+
 package com.hexaware.cozyhavenproject.dto;
 
 
@@ -17,7 +19,7 @@ public class BookingPersonDto {
     private Integer bookingId;
 
     
-    @NotNull(message = "Name is required") // ✅ Added validation
+    @NotNull(message = "Name is required") 
     private String name;
     
     @Positive(message = "Age must be positive")
